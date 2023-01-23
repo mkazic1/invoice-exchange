@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Typography, Box, Button } from '@mui/material';
-import ROUTES from '../constants/routes';
+import ROUTES from '../constants-data/routes';
 import { pageLayoutStyle, linkStyle } from '../styles/pages/CommonPagesStyle';
 
 function NotFoundPage() {
