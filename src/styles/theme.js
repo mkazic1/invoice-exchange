@@ -33,7 +33,7 @@ const theme = createTheme({
     error: ERROR,
     text: {
       primary: PRIMARY.main,
-      display: SECONDARY.light,
+      secondary: SECONDARY.light,
       info: INFO.main,
       pending: INFO.lighter,
     },
