@@ -1,5 +1,5 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import ROUTES from './constants/routes';
+import ROUTES from './constants-data/routes';
 import Providers from './providers';
 import NotFoundPage from './pages/NotFoundPage';
 import WelcomePage from './pages/WelcomePage';
@@ -7,11 +7,13 @@ import DashboardPage from './pages/DashboardPage';
 import Invoices from './pages/invoices/Invoices';
 import Sellers from './pages/sellers/Sellers';
 import Customers from './pages/customers/Customers';
+import NavigationBar from './components/NavigationBar';
 
 function App() {
   return (
     <Providers>
       <BrowserRouter>
+        <NavigationBar />
         <Routes>
           <Route path={ROUTES.WELCOME} element={<WelcomePage />} />
           <Route path="/" element={<WelcomePage />} />
