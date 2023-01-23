@@ -1,4 +1,4 @@
-export const errorPageStyle = {
+export const pageLayoutStyle = {
   display: 'flex',
   width: '100vw',
   height: '100vh',
