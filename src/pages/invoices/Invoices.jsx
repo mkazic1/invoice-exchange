@@ -1,7 +1,11 @@
 import React from 'react';
+import { Box } from '@mui/material';
+import { mainPagesLayoutStyle } from '../../styles/CommonStyle';
 
 export default function Invoices() {
   return (
-    <div>Invoices</div>
+    <Box style={mainPagesLayoutStyle}>
+      Invoices
+    </Box>
   );
 }
