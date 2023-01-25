@@ -2,7 +2,7 @@ const ROUTES = {
   WELCOME: '/',
   DASHBOARD: '/dashboard',
   INVOICES: '/invoices',
-  SELLERS: '/selllers',
+  SELLERS: '/sellers',
   CUSTOMERS: '/customers',
 };
 
