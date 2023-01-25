@@ -8,12 +8,11 @@ export const containerStyle = {
   padding: 0,
 };
 
-export const linkStyle = { textDecoration: 'none' };
-
-export const cardMediaStyle = { width: '8%', marginRight: '24px' };
+export const cardMediaStyle = { width: '8%', marginRight: '15px' };
 
 export const navigationTitleStyle = {
   letterSpacing: '0.2rem',
-  color: 'text.secondary',
-  fontWeight: 600,
+  color: 'text.primary',
+  fontWeight: 500,
+  marginTop: '5px',
 };
