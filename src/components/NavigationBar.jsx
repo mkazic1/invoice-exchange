@@ -12,14 +12,14 @@ import LogoPath from '../assets/logo2.png';
 import {
   appBarStyle,
   containerStyle,
-  linkStyle,
   cardMediaStyle,
   navigationTitleStyle,
 } from '../styles/components/NavigationBarStyle';
+import { linkStyle } from '../styles/CommonStyle';
 
 function NavigationBar() {
   return (
-    <AppBar sx={appBarStyle}>
+    <AppBar position="fixed" sx={appBarStyle}>
       <Container maxWidth="false" style={containerStyle}>
         <Box>
           <Link to={ROUTES.DASHBOARD} style={linkStyle}>
