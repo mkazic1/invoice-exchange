@@ -1,10 +1,15 @@
 import PropTypes from 'prop-types';
 import { ThemeProvider } from '@mui/material';
+import * as React from 'react';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import theme from '../styles/theme';
 
 const Providers = ({ children }) => (
   <ThemeProvider theme={theme}>
-    {children}
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      {children}
+    </LocalizationProvider>
   </ThemeProvider>
 );
 
