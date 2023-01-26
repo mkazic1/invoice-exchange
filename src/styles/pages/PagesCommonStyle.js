@@ -9,7 +9,7 @@ export const titleBoxStyle = {
 };
 
 export const buttonsStyle = {
-  color: 'text.primary',
+  color: 'text.secondary',
   backgroundColor: 'primary.main',
 };
 

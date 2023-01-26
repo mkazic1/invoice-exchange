@@ -12,7 +12,7 @@ export const cardMediaStyle = { width: '8%', marginRight: '15px' };
 
 export const navigationTitleStyle = {
   letterSpacing: '0.2rem',
-  color: 'text.primary',
+  color: 'text.secondary',
   fontWeight: 500,
   marginTop: '5px',
 };

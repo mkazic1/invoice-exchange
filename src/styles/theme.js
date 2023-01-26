@@ -32,8 +32,8 @@ const theme = createTheme({
     success: SUCCESS,
     error: ERROR,
     text: {
-      primary: SECONDARY.light,
-      secondary: PRIMARY.main,
+      primary: PRIMARY.main,
+      secondary: SECONDARY.light,
       info: INFO.main,
       pending: INFO.lighter,
     },
