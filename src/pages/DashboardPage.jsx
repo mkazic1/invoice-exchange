@@ -1,13 +1,9 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
-import { mainPagesLayoutStyle, mainPagesTitleStyle } from '../styles/CommonStyle';
+import { Box } from '@mui/material';
+import { mainPagesLayoutStyle } from '../styles/pages/PagesCommonStyle';
 
-export default function DashboardPage() {
-  return (
-    <Box sx={mainPagesLayoutStyle}>
-      <Typography variant="h4" sx={mainPagesTitleStyle}>
-        Dashboard page
-      </Typography>
-    </Box>
-  );
-}
+const DashboardPage = () => (
+  <Box sx={mainPagesLayoutStyle} />
+);
+
+export default DashboardPage;
