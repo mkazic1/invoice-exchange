@@ -11,12 +11,12 @@ export const menuButtonsStyle = {
   display: 'flex',
   flexDirection: 'row',
   borderRadius: '4px',
-  color: 'text.primary',
+  color: 'text.secondary',
   width: '180px',
   '&:hover': {
     backgroundColor: 'secondary.main',
     border: 'none',
-    color: 'text.secondary',
+    color: 'text.primary',
   },
 };
 

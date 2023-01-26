@@ -8,13 +8,8 @@ export const pageLayoutStyle = {
   backgroundColor: 'secondary.dark',
 };
 
-export const mainPagesLayoutStyle = {
-  marginLeft: '220px',
-  marginTop: '80px',
-};
-
-export const mainPagesTitleStyle = {
-  color: 'text.info',
-};
-
 export const linkStyle = { textDecoration: 'none' };
+
+export const cardMediaStyle = {
+  width: '8%', marginLeft: '15px',
+};

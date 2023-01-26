@@ -1,11 +1,11 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import { mainPagesLayoutStyle } from '../../styles/CommonStyle';
+import { mainPagesLayoutStyle } from '../../styles/pages/PagesCommonStyle';
 
-export default function Sellers() {
-  return (
-    <Box style={mainPagesLayoutStyle}>
-      Sellers
-    </Box>
-  );
-}
+const Sellers = () => (
+  <Box style={mainPagesLayoutStyle}>
+    Sellers
+  </Box>
+);
+
+export default Sellers;

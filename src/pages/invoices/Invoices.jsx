@@ -1,11 +1,44 @@
-import React from 'react';
-import { Box } from '@mui/material';
-import { mainPagesLayoutStyle } from '../../styles/CommonStyle';
+import React, { useState } from 'react';
+import {
+  Box,
+  Button,
+  Typography,
+  Tooltip,
+} from '@mui/material';
+import { AddBox } from '@mui/icons-material';
+import {
+  titleBoxStyle,
+  buttonsStyle,
+  mainPagesLayoutStyle,
+  mainPagesTitleStyle,
+} from '../../styles/pages/PagesCommonStyle';
+import CreateInvoiceModal from './CreateInvoiceModal';
 
-export default function Invoices() {
+const Invoices = () => {
+  const [isCreateModalOpened, setIsCreateModalOpened] = useState(false);
   return (
     <Box style={mainPagesLayoutStyle}>
-      Invoices
+      <Box sx={titleBoxStyle}>
+        <Typography variant="h6" sx={mainPagesTitleStyle}>Invoices</Typography>
+        <Tooltip title="Create new invoice">
+          <Button
+            startIcon={<AddBox />}
+            size="medium"
+            variant="contained"
+            type="submit"
+            sx={buttonsStyle}
+            onClick={() => setIsCreateModalOpened(true)}
+          >
+            Create invoice
+          </Button>
+        </Tooltip>
+        <CreateInvoiceModal
+          isDialogOpened={isCreateModalOpened}
+          setIsDialogOpened={setIsCreateModalOpened}
+        />
+      </Box>
     </Box>
   );
-}
+};
+
+export default Invoices;

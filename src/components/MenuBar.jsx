@@ -16,22 +16,21 @@ import {
 } from '../styles/components/MenuBarStyle';
 import { linkStyle } from '../styles/CommonStyle';
 
-export default function MenuBar() {
-  return (
-    <Drawer
-      PaperProps={{
-        sx: {
-          backgroundColor: 'primary.main',
-          width: '200px',
-          zIndex: 0,
-        },
-      }}
-      variant="permanent"
-      open
-      anchor="left"
-    >
-      <Box sx={menuOptionsStyle}>
-        {
+const MenuBar = () => (
+  <Drawer
+    PaperProps={{
+      sx: {
+        backgroundColor: 'primary.main',
+        width: '200px',
+        zIndex: 0,
+      },
+    }}
+    variant="permanent"
+    open
+    anchor="left"
+  >
+    <Box sx={menuOptionsStyle}>
+      {
           MENU_OPTIONS.map((option) => (
             <ListItem key={option.title} disablePadding>
               <NavLink
@@ -46,7 +45,8 @@ export default function MenuBar() {
             </ListItem>
           ))
       }
-      </Box>
-    </Drawer>
-  );
-}
+    </Box>
+  </Drawer>
+);
+
+export default MenuBar;

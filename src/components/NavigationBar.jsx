@@ -17,32 +17,30 @@ import {
 } from '../styles/components/NavigationBarStyle';
 import { linkStyle } from '../styles/CommonStyle';
 
-function NavigationBar() {
-  return (
-    <AppBar position="fixed" sx={appBarStyle}>
-      <Container maxWidth="false" style={containerStyle}>
-        <Box>
-          <Link to={ROUTES.DASHBOARD} style={linkStyle}>
-            <Toolbar variant="dense">
-              <CardMedia
-                image={LogoPath}
-                alt="LogoImage"
-                component="img"
-                sx={cardMediaStyle}
-              />
-              <Typography
-                variant="h6"
-                component="h6"
-                sx={navigationTitleStyle}
-              >
-                Invoice Exchange
-              </Typography>
-            </Toolbar>
-          </Link>
-        </Box>
-      </Container>
-    </AppBar>
-  );
-}
+const NavigationBar = () => (
+  <AppBar position="fixed" sx={appBarStyle}>
+    <Container maxWidth="false" style={containerStyle}>
+      <Box>
+        <Link to={ROUTES.DASHBOARD} style={linkStyle}>
+          <Toolbar variant="dense">
+            <CardMedia
+              image={LogoPath}
+              alt="LogoImage"
+              component="img"
+              sx={cardMediaStyle}
+            />
+            <Typography
+              variant="h6"
+              component="h6"
+              sx={navigationTitleStyle}
+            >
+              Invoice Exchange
+            </Typography>
+          </Toolbar>
+        </Link>
+      </Box>
+    </Container>
+  </AppBar>
+);
 
 export default NavigationBar;

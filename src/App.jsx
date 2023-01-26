@@ -9,24 +9,22 @@ import Sellers from './pages/sellers/Sellers';
 import Customers from './pages/customers/Customers';
 import Layout from './components/Layout';
 
-function App() {
-  return (
-    <Providers>
-      <BrowserRouter>
-        <Routes>
-          <Route path={ROUTES.WELCOME} element={<WelcomePage />} />
-          <Route path="/" element={<WelcomePage />} />
-          <Route element={<Layout />}>
-            <Route path={ROUTES.DASHBOARD} element={<DashboardPage />} />
-            <Route path={ROUTES.INVOICES} element={<Invoices />} />
-            <Route path={ROUTES.SELLERS} element={<Sellers />} />
-            <Route path={ROUTES.CUSTOMERS} element={<Customers />} />
-          </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </BrowserRouter>
-    </Providers>
-  );
-}
+const App = () => (
+  <Providers>
+    <BrowserRouter>
+      <Routes>
+        <Route path={ROUTES.WELCOME} element={<WelcomePage />} />
+        <Route path="/" element={<WelcomePage />} />
+        <Route element={<Layout />}>
+          <Route path={ROUTES.DASHBOARD} element={<DashboardPage />} />
+          <Route path={ROUTES.INVOICES} element={<Invoices />} />
+          <Route path={ROUTES.SELLERS} element={<Sellers />} />
+          <Route path={ROUTES.CUSTOMERS} element={<Customers />} />
+        </Route>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </BrowserRouter>
+  </Providers>
+);
 
 export default App;
