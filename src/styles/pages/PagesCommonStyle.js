@@ -4,12 +4,8 @@ export const titleBoxStyle = {
   alignItems: 'center',
   padding: '10px',
   margin: '10px',
-  backgroundColor: 'secondary.main',
+  backgroundColor: 'secondary.dark',
   borderRadius: '4px',
-};
-
-export const buttonsStyle = {
-  marginX: '10px',
 };
 
 export const mainPagesLayoutStyle = {
