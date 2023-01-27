@@ -6,6 +6,7 @@ import {
   Tooltip,
 } from '@mui/material';
 import { AddBox, Delete, Edit } from '@mui/icons-material';
+import SellersTableView from './SellersTableVies';
 import {
   titleBoxStyle,
   mainPagesLayoutStyle,
@@ -17,19 +18,19 @@ const Sellers = () => (
   <Box style={mainPagesLayoutStyle}>
     <Box sx={titleBoxStyle}>
       <Typography variant="h6" sx={mainPagesTitleStyle}>Sellers</Typography>
-      <Tooltip title="Create new invoice">
+      <Tooltip title="Add new seller">
         <Button
           startIcon={<AddBox />}
           size="medium"
           variant="contained"
           type="submit"
         >
-          Create invoice
+          Add new seller
         </Button>
       </Tooltip>
     </Box>
     <Box sx={buttonsBoxStyle}>
-      <Tooltip title="Edit inactive invoice">
+      <Tooltip title="Edit seller">
         <Button
           startIcon={<Edit />}
           size="medium"
@@ -39,7 +40,7 @@ const Sellers = () => (
           Edit
         </Button>
       </Tooltip>
-      <Tooltip title="Delete invoice">
+      <Tooltip title="Delete seller">
         <Button
           startIcon={<Delete />}
           size="medium"
@@ -49,6 +50,7 @@ const Sellers = () => (
         </Button>
       </Tooltip>
     </Box>
+    <SellersTableView />
   </Box>
 );
 
