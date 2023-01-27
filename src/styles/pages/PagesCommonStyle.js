@@ -4,7 +4,7 @@ export const titleBoxStyle = {
   alignItems: 'center',
   padding: '10px',
   margin: '10px',
-  backgroundColor: 'secondary.dark',
+  backgroundColor: 'secondary.main',
   borderRadius: '4px',
 };
 
