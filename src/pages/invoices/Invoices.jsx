@@ -5,14 +5,16 @@ import {
   Typography,
   Tooltip,
 } from '@mui/material';
-import { AddBox } from '@mui/icons-material';
+import { AddBox, Delete, Edit } from '@mui/icons-material';
+import CreateInvoiceModal from './CreateInvoiceModal';
+import InvoicesTableView from './InvoicesTableView';
 import {
   titleBoxStyle,
-  buttonsStyle,
   mainPagesLayoutStyle,
   mainPagesTitleStyle,
+  buttonsBoxStyle,
+  buttonsStyle,
 } from '../../styles/pages/PagesCommonStyle';
-import CreateInvoiceModal from './CreateInvoiceModal';
 
 const Invoices = () => {
   const [isCreateModalOpened, setIsCreateModalOpened] = useState(false);
@@ -26,7 +28,6 @@ const Invoices = () => {
             size="medium"
             variant="contained"
             type="submit"
-            sx={buttonsStyle}
             onClick={() => setIsCreateModalOpened(true)}
           >
             Create invoice
@@ -35,8 +36,32 @@ const Invoices = () => {
         <CreateInvoiceModal
           isDialogOpened={isCreateModalOpened}
           setIsDialogOpened={setIsCreateModalOpened}
+          sx={{ padding: '10xp' }}
         />
       </Box>
+      <Box sx={buttonsBoxStyle}>
+        <Tooltip title="Edit inactive invoice">
+          <Button
+            startIcon={<Edit />}
+            size="medium"
+            variant="contained"
+            sx={buttonsStyle}
+          >
+            Edit
+          </Button>
+        </Tooltip>
+        <Tooltip title="Delete invoice">
+          <Button
+            startIcon={<Delete />}
+            size="medium"
+            variant="contained"
+            sx={buttonsStyle}
+          >
+            Delete
+          </Button>
+        </Tooltip>
+      </Box>
+      <InvoicesTableView />
     </Box>
   );
 };
