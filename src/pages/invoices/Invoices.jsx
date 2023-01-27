@@ -13,11 +13,11 @@ import {
   mainPagesLayoutStyle,
   mainPagesTitleStyle,
   buttonsBoxStyle,
-  buttonsStyle,
 } from '../../styles/pages/PagesCommonStyle';
 
 const Invoices = () => {
   const [isCreateModalOpened, setIsCreateModalOpened] = useState(false);
+
   return (
     <Box style={mainPagesLayoutStyle}>
       <Box sx={titleBoxStyle}>
@@ -45,7 +45,7 @@ const Invoices = () => {
             startIcon={<Edit />}
             size="medium"
             variant="contained"
-            sx={buttonsStyle}
+            sx={{ marginRight: '10px' }}
           >
             Edit
           </Button>
@@ -55,7 +55,6 @@ const Invoices = () => {
             startIcon={<Delete />}
             size="medium"
             variant="contained"
-            sx={buttonsStyle}
           >
             Delete
           </Button>
