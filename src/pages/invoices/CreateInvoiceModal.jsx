@@ -9,13 +9,14 @@ import {
   TextField,
   Button,
   FormControl,
+  Select,
 } from '@mui/material';
 import { Description } from '@mui/icons-material';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { DatePicker } from '@mui/x-date-pickers';
+import { DesktopDatePicker } from '@mui/x-date-pickers';
 import MESSAGES from '../../constants-data/validation';
 import { toastifyAlertSuccess, toastifyAlertError } from '../../constants-data/toastify';
 import {
@@ -24,19 +25,16 @@ import {
   titleTypographyStyle,
   dialogTitleBox,
   textfieldStyle,
+  datepickerDaysStyle,
 } from '../../styles/pages/CreateModalStyle';
 
 const CreateInvoiceModal = ({ isDialogOpened, setIsDialogOpened }) => {
   const [isSaving, setIsSaving] = useState(false);
 
   const validationSchema = Yup.object().shape({
-    seller: Yup.string()
+    date: Yup.string()
       .required(MESSAGES.REQUIRED_FIELD)
       .typeError(MESSAGES.INVALID_INPUT),
-    customer: Yup.string()
-      .required(MESSAGES.REQUIRED_FIELD)
-      .typeError(MESSAGES.INVALID_INPUT),
-    date: Yup.string(),
     amount: Yup.number()
       .required(MESSAGES.REQUIRED_FIELD)
       .typeError(MESSAGES.INVALID_INPUT),
@@ -47,8 +45,6 @@ const CreateInvoiceModal = ({ isDialogOpened, setIsDialogOpened }) => {
   } = useForm({
     resolver: yupResolver(validationSchema),
     mode: 'onChange',
-    defaultValues: {
-    },
   });
 
   const handleClose = () => {
@@ -90,27 +86,28 @@ const CreateInvoiceModal = ({ isDialogOpened, setIsDialogOpened }) => {
       </DialogTitle>
       <FormControl component="form">
         <DialogContent>
-          <TextField
+          <FormControl
             focused
-            label="Seller"
-            error={!!errors?.seller}
-            register={register}
-            fieldName="seller"
-            helperText={errors?.seller?.message}
+            fullWidth
             sx={textfieldStyle}
-          />
-          <TextField
+          >
+            <Select
+              label="Seller"
+            />
+          </FormControl>
+          <FormControl
             focused
-            label="Customer"
-            error={!!errors?.customer}
-            register={register}
-            fieldName="customer"
-            helperText={errors?.customer?.message}
+            fullWidth
             sx={textfieldStyle}
-          />
-          <DatePicker
+          >
+            <Select
+              label="Customer"
+            />
+          </FormControl>
+          <DesktopDatePicker
             label="Date"
             disableFuture
+            inputFormat="DD/MM/YYYY"
             onChange={async (value) => {
               setValue('date', value);
               await trigger('date');
@@ -119,6 +116,9 @@ const CreateInvoiceModal = ({ isDialogOpened, setIsDialogOpened }) => {
             renderInput={(params) => (
               <TextField
                 focused
+                InputProps={{
+                  readOnly: true,
+                }}
                 {...params}
                 sx={textfieldStyle}
               />
