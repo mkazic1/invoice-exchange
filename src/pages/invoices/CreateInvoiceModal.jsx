@@ -25,7 +25,6 @@ import {
   titleTypographyStyle,
   dialogTitleBox,
   textfieldStyle,
-  datepickerDaysStyle,
 } from '../../styles/pages/CreateModalStyle';
 
 const CreateInvoiceModal = ({ isDialogOpened, setIsDialogOpened }) => {
