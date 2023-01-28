@@ -4,7 +4,7 @@ const TABLE_HEADER = [
     key: 0,
   },
   {
-    title: 'Headquarters location',
+    title: 'Headquarters address',
     key: 1,
   },
   {
