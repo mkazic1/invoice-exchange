@@ -21,7 +21,7 @@ const SUCCESS = {
 };
 
 const ERROR = {
-  main: '#ED4B42',
+  main: '#D91111',
 };
 
 const theme = createTheme({

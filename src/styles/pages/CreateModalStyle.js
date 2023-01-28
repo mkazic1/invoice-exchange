@@ -10,7 +10,7 @@ export const titleTypographyStyle = {
 
 export const iconStyle = {
   color: 'primary.main',
-  fontSize: 80,
+  fontSize: 60,
 };
 
 export const dialogActionStyle = {
