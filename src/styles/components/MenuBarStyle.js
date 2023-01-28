@@ -13,6 +13,7 @@ export const menuButtonsStyle = {
   borderRadius: '4px',
   color: 'text.secondary',
   width: '180px',
+  marginTop: '10px',
   '&:hover': {
     backgroundColor: 'secondary.main',
     border: 'none',

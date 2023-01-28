@@ -10,7 +10,7 @@ export const titleBoxStyle = {
 
 export const mainPagesLayoutStyle = {
   marginLeft: '220px',
-  marginTop: '80px',
+  marginTop: '90px',
   marginRight: '20px',
   marginBottom: '20px',
 };
@@ -26,4 +26,12 @@ export const buttonsBoxStyle = {
   alignItems: 'center',
   justifyContent: 'right',
   paddingX: '10px',
+};
+
+export const dashboardBoxStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexDirection: 'column',
+  padding: '150px',
 };
