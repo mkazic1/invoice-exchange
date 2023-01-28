@@ -8,11 +8,6 @@ export const titleBoxStyle = {
   borderRadius: '4px',
 };
 
-export const buttonsStyle = {
-  color: 'text.secondary',
-  backgroundColor: 'primary.main',
-};
-
 export const mainPagesLayoutStyle = {
   marginLeft: '220px',
   marginTop: '80px',
@@ -24,4 +19,11 @@ export const mainPagesTitleStyle = {
   color: 'text.info',
   letterSpacing: '0.1rem',
   fontWeight: 600,
+};
+
+export const buttonsBoxStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'right',
+  paddingX: '10px',
 };

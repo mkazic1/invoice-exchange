@@ -9,14 +9,12 @@ import {
   TextField,
   Button,
   FormControl,
-  Select,
 } from '@mui/material';
-import { Description } from '@mui/icons-material';
+import { AssignmentInd } from '@mui/icons-material';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { DesktopDatePicker } from '@mui/x-date-pickers';
 import MESSAGES from '../../constants-data/validation';
 import { toastifyAlertSuccess, toastifyAlertError } from '../../constants-data/toastify';
 import {
@@ -27,20 +25,23 @@ import {
   textfieldStyle,
 } from '../../styles/pages/CreateModalStyle';
 
-const CreateInvoiceModal = ({ isDialogOpened, setIsDialogOpened }) => {
+const AddSellerModal = ({ isDialogOpened, setIsDialogOpened }) => {
   const [isSaving, setIsSaving] = useState(false);
 
   const validationSchema = Yup.object().shape({
-    date: Yup.string()
+    companyName: Yup.string()
       .required(MESSAGES.REQUIRED_FIELD)
       .typeError(MESSAGES.INVALID_INPUT),
-    amount: Yup.number()
+    hqAddress: Yup.string()
+      .required(MESSAGES.REQUIRED_FIELD)
+      .typeError(MESSAGES.INVALID_INPUT),
+    isActive: Yup.boolean()
       .required(MESSAGES.REQUIRED_FIELD)
       .typeError(MESSAGES.INVALID_INPUT),
   });
 
   const {
-    register, handleSubmit, reset, setValue, trigger, watch, formState: { errors },
+    register, handleSubmit, reset, formState: { errors },
   } = useForm({
     resolver: yupResolver(validationSchema),
     mode: 'onChange',
@@ -50,9 +51,9 @@ const CreateInvoiceModal = ({ isDialogOpened, setIsDialogOpened }) => {
     setIsDialogOpened(false);
     reset(
       {
-        seller: '',
-        customer: '',
-        amount: '',
+        companyName: '',
+        hqAddress: '',
+        isActive: '',
       },
     );
   };
@@ -60,15 +61,13 @@ const CreateInvoiceModal = ({ isDialogOpened, setIsDialogOpened }) => {
   const onSubmitHandler = async () => {
     try {
       setIsSaving(true);
-      toastifyAlertSuccess('New invoice successfully created');
+      toastifyAlertSuccess('New seller successfully added');
       handleClose();
     } catch (error) {
       toastifyAlertError('Something went wrong');
     }
     setIsSaving(false);
   };
-
-  const invoiceDate = watch('date');
 
   return (
     <Dialog
@@ -78,58 +77,38 @@ const CreateInvoiceModal = ({ isDialogOpened, setIsDialogOpened }) => {
       fullWidth
     >
       <DialogTitle sx={dialogTitleBox}>
-        <Description sx={iconStyle} />
+        <AssignmentInd sx={iconStyle} />
         <Typography variant="h5" component="span" sx={titleTypographyStyle}>
-          Create invoice
+          Add new seller
         </Typography>
       </DialogTitle>
       <FormControl component="form">
         <DialogContent>
-          <FormControl
+          <TextField
             focused
-            fullWidth
+            label="Name"
+            error={!!errors?.companyName}
+            register={register}
+            fieldName="companyName"
+            helperText={errors?.companyName?.message}
             sx={textfieldStyle}
-          >
-            <Select
-              label="Seller"
-            />
-          </FormControl>
-          <FormControl
-            focused
-            fullWidth
-            sx={textfieldStyle}
-          >
-            <Select
-              label="Customer"
-            />
-          </FormControl>
-          <DesktopDatePicker
-            label="Date"
-            disableFuture
-            inputFormat="DD/MM/YYYY"
-            onChange={async (value) => {
-              setValue('date', value);
-              await trigger('date');
-            }}
-            value={invoiceDate}
-            renderInput={(params) => (
-              <TextField
-                focused
-                InputProps={{
-                  readOnly: true,
-                }}
-                {...params}
-                sx={textfieldStyle}
-              />
-            )}
           />
           <TextField
             focused
-            label="Amount"
-            error={!!errors?.amount}
+            label="Headquarters address"
+            error={!!errors?.hqAddress}
             register={register}
-            fieldName="amount"
-            helperText={errors?.amount?.message}
+            fieldName="hqAddress"
+            helperText={errors?.hqAddress?.message}
+            sx={textfieldStyle}
+          />
+          <TextField
+            focused
+            label="Address"
+            error={!!errors?.isActive}
+            register={register}
+            fieldName="isActive"
+            helperText={errors?.isActive?.message}
             sx={textfieldStyle}
           />
         </DialogContent>
@@ -155,14 +134,14 @@ const CreateInvoiceModal = ({ isDialogOpened, setIsDialogOpened }) => {
   );
 };
 
-CreateInvoiceModal.defaultProps = {
+AddSellerModal.defaultProps = {
   isDialogOpened: false,
   setIsDialogOpened: null,
 };
 
-CreateInvoiceModal.propTypes = {
+AddSellerModal.propTypes = {
   isDialogOpened: PropTypes.bool,
   setIsDialogOpened: PropTypes.func,
 };
 
-export default CreateInvoiceModal;
+export default AddSellerModal;
