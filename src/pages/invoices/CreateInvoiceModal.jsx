@@ -148,7 +148,7 @@ const CreateInvoiceModal = ({ isDialogOpened, setIsDialogOpened }) => {
           onClick={handleSubmit(onSubmitHandler)}
           disabled={isSaving}
         >
-          Create invoice
+          Save
         </LoadingButton>
       </DialogActions>
     </Dialog>
