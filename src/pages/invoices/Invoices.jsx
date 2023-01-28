@@ -14,9 +14,11 @@ import {
   mainPagesTitleStyle,
   buttonsBoxStyle,
 } from '../../styles/pages/PagesCommonStyle';
+import DeleteModal from '../DeleteModal';
 
 const Invoices = () => {
   const [isCreateModalOpened, setIsCreateModalOpened] = useState(false);
+  const [isDeleteModalOpened, setIsDeleteModalOpened] = useState(false);
 
   return (
     <Box style={mainPagesLayoutStyle}>
@@ -36,7 +38,6 @@ const Invoices = () => {
         <CreateInvoiceModal
           isDialogOpened={isCreateModalOpened}
           setIsDialogOpened={setIsCreateModalOpened}
-          sx={{ padding: '10xp' }}
         />
       </Box>
       <Box sx={buttonsBoxStyle}>
@@ -55,10 +56,15 @@ const Invoices = () => {
             startIcon={<Delete />}
             size="medium"
             variant="contained"
+            onClick={() => setIsDeleteModalOpened(true)}
           >
             Delete
           </Button>
         </Tooltip>
+        <DeleteModal
+          isDialogOpened={isDeleteModalOpened}
+          setIsDialogOpened={setIsDeleteModalOpened}
+        />
       </Box>
       <InvoicesTableView />
     </Box>

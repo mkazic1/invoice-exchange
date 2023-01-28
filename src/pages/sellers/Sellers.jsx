@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Button,
@@ -7,6 +7,8 @@ import {
 } from '@mui/material';
 import { AddBox, Delete, Edit } from '@mui/icons-material';
 import SellersTableView from './SellersTableVies';
+import AddSellerModal from './AddSellerModal';
+import DeleteModal from '../DeleteModal';
 import {
   titleBoxStyle,
   mainPagesLayoutStyle,
@@ -14,44 +16,59 @@ import {
   buttonsBoxStyle,
 } from '../../styles/pages/PagesCommonStyle';
 
-const Sellers = () => (
-  <Box style={mainPagesLayoutStyle}>
-    <Box sx={titleBoxStyle}>
-      <Typography variant="h6" sx={mainPagesTitleStyle}>Sellers</Typography>
-      <Tooltip title="Add new seller">
-        <Button
-          startIcon={<AddBox />}
-          size="medium"
-          variant="contained"
-          type="submit"
-        >
-          Add new seller
-        </Button>
-      </Tooltip>
+const Sellers = () => {
+  const [isAddSellerModalOpened, setIsAddSellerModalOpened] = useState(false);
+  const [isDeleteModalOpened, setIsDeleteModalOpened] = useState(false);
+
+  return (
+    <Box style={mainPagesLayoutStyle}>
+      <Box sx={titleBoxStyle}>
+        <Typography variant="h6" sx={mainPagesTitleStyle}>Sellers</Typography>
+        <Tooltip title="Add new seller">
+          <Button
+            startIcon={<AddBox />}
+            size="medium"
+            variant="contained"
+            type="submit"
+            onClick={() => setIsAddSellerModalOpened(true)}
+          >
+            Add new seller
+          </Button>
+        </Tooltip>
+        <AddSellerModal
+          isDialogOpened={isAddSellerModalOpened}
+          setIsDialogOpened={setIsAddSellerModalOpened}
+        />
+      </Box>
+      <Box sx={buttonsBoxStyle}>
+        <Tooltip title="Edit seller">
+          <Button
+            startIcon={<Edit />}
+            size="medium"
+            variant="contained"
+            sx={{ marginRight: '10px' }}
+          >
+            Edit
+          </Button>
+        </Tooltip>
+        <Tooltip title="Delete seller">
+          <Button
+            startIcon={<Delete />}
+            size="medium"
+            variant="contained"
+            onClick={() => setIsDeleteModalOpened(true)}
+          >
+            Delete
+          </Button>
+        </Tooltip>
+        <DeleteModal
+          isDialogOpened={isDeleteModalOpened}
+          setIsDialogOpened={setIsDeleteModalOpened}
+        />
+      </Box>
+      <SellersTableView />
     </Box>
-    <Box sx={buttonsBoxStyle}>
-      <Tooltip title="Edit seller">
-        <Button
-          startIcon={<Edit />}
-          size="medium"
-          variant="contained"
-          sx={{ marginRight: '10px' }}
-        >
-          Edit
-        </Button>
-      </Tooltip>
-      <Tooltip title="Delete seller">
-        <Button
-          startIcon={<Delete />}
-          size="medium"
-          variant="contained"
-        >
-          Delete
-        </Button>
-      </Tooltip>
-    </Box>
-    <SellersTableView />
-  </Box>
-);
+  );
+};
 
 export default Sellers;
