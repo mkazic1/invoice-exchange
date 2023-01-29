@@ -5,7 +5,7 @@ import { mainPagesLayoutStyle, mainPagesTitleStyle, dashboardBoxStyle } from '..
 const DashboardPage = () => (
   <Box sx={mainPagesLayoutStyle}>
     <Box sx={dashboardBoxStyle}>
-      <Typography variant="h4" sx={mainPagesTitleStyle}>
+      <Typography variant="h4" sx={{ ...mainPagesTitleStyle, textAlign: 'center' }}>
         Welcome to Invoice Exchange System
       </Typography>
       <Typography variant="body1" sx={{ color: 'text.primary', textAlign: 'center' }}>

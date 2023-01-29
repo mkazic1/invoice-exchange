@@ -5,10 +5,14 @@ import { pageLayoutStyle, linkStyle } from '../styles/CommonStyle';
 
 const WelcomePage = () => (
   <Box sx={pageLayoutStyle}>
-    <Typography variant="h3" component="h1" sx={{ color: 'text.secondary' }}>
+    <Typography variant="h3" component="h1" sx={{ color: 'text.secondary', textAlign: 'center' }}>
       Invoice Exchange System
     </Typography>
-    <Typography variant="h5" component="h4" sx={{ color: 'text.info', marginTop: 4 }}>
+    <Typography
+      variant="h5"
+      component="h4"
+      sx={{ color: 'text.info', marginTop: 4, textAlign: 'center' }}
+    >
       Invoice Exchange System deals with invoices, sellers, customers and makes your life easier
     </Typography>
     <Link to={`${ROUTES.DASHBOARD}`} style={linkStyle}>
