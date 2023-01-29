@@ -1,19 +1,19 @@
 const TABLE_HEADER = [
   {
     title: 'Seller',
-    key: 0,
+    key: 'sellerName',
   },
   {
     title: 'Customer',
-    key: 1,
+    key: 'customerName',
   },
   {
     title: 'Date',
-    key: 2,
+    key: 'date',
   },
   {
-    title: 'Amount',
-    key: 3,
+    title: 'Amount ($)',
+    key: 'amount',
   },
 ];
 
