@@ -11,7 +11,7 @@ import {
   TableRow,
 } from '@mui/material';
 import TABLE_HEADER from '../../constants-data/sellers-table';
-import headerCellStyle from '../../styles/pages/TableStyle';
+import { headerCellStyle, tableBox } from '../../styles/pages/TableStyle';
 
 const SellersTableView = () => {
   const [page, setPage] = useState(0);
@@ -27,7 +27,7 @@ const SellersTableView = () => {
   };
 
   return (
-    <Box sx={{ padding: '10px' }}>
+    <Box sx={tableBox}>
       <Paper sx={{ width: '100%', overflow: 'hidden' }}>
         <TableContainer sx={{ maxHeight: 600 }}>
           <Table stickyHeader>
