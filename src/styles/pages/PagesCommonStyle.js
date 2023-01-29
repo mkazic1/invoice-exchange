@@ -25,6 +25,7 @@ export const buttonsBoxStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'right',
+  marginTop: '30px',
   paddingX: '10px',
 };
 
@@ -34,4 +35,9 @@ export const dashboardBoxStyle = {
   justifyContent: 'center',
   flexDirection: 'column',
   padding: '150px',
+};
+
+export const circularLoaderStyle = {
+  position: 'absolute',
+  zIndex: 9999,
 };
