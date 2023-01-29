@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Button,
@@ -19,13 +19,6 @@ import DeleteModal from '../DeleteModal';
 const Invoices = () => {
   const [isCreateModalOpened, setIsCreateModalOpened] = useState(false);
   const [isDeleteModalOpened, setIsDeleteModalOpened] = useState(false);
-  const [invoices, setInvoices] = useState([]);
-
-  useEffect(() => {
-    fetch('/api/invoices')
-      .then((response) => response.json())
-      .then((data) => setInvoices(data));
-  }, []);
 
   return (
     <Box style={mainPagesLayoutStyle}>
