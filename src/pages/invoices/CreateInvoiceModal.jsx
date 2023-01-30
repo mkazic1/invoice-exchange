@@ -81,13 +81,24 @@ const CreateInvoiceModal = ({ isDialogOpened, setIsDialogOpened }) => {
     );
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const formattedDate = date.toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    });
+    return formattedDate;
+  };
+
   const onSubmitHandler = async (data) => {
     const newInvoice = {
       sellerName: data?.sellerName,
       customerName: data?.customerName,
-      date: data?.date,
+      date: formatDate(data?.date),
       amount: data?.amount,
     };
+    console.log(newInvoice);
     try {
       setIsSaving(true);
       await fetch('/api/invoices', {
