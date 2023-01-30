@@ -39,6 +39,7 @@ const AddCustomerModal = ({ isDialogOpened, setIsDialogOpened }) => {
       .required(MESSAGES.REQUIRED_FIELD)
       .typeError(MESSAGES.INVALID_INPUT),
     age: Yup.number()
+      .moreThan(18, MESSAGES.INVALID_AGE)
       .required(MESSAGES.REQUIRED_FIELD)
       .typeError(MESSAGES.INVALID_INPUT),
   });
@@ -47,7 +48,13 @@ const AddCustomerModal = ({ isDialogOpened, setIsDialogOpened }) => {
     register, handleSubmit, reset, formState: { errors },
   } = useForm({
     resolver: yupResolver(validationSchema),
-    mode: 'onChange',
+    mode: 'onSubmit',
+    defaultValues: {
+      name: '',
+      surname: '',
+      address: '',
+      age: 18,
+    },
   });
 
   const handleClose = () => {
@@ -57,14 +64,26 @@ const AddCustomerModal = ({ isDialogOpened, setIsDialogOpened }) => {
         name: '',
         surname: '',
         address: '',
-        age: 0,
+        age: 18,
       },
     );
   };
 
-  const onSubmitHandler = async () => {
+  const onSubmitHandler = async (data) => {
+    const newCustomer = {
+      name: data?.name,
+      surname: data?.surname,
+      address: data?.address,
+      age: data?.age,
+    };
     try {
       setIsSaving(true);
+      await fetch('/api/customers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newCustomer),
+      });
+
       toastifyAlertSuccess('New customer successfully added');
       handleClose();
     } catch (error) {
@@ -91,58 +110,55 @@ const AddCustomerModal = ({ isDialogOpened, setIsDialogOpened }) => {
           <TextField
             focused
             label="Name"
+            {...register('name')}
             error={!!errors?.name}
-            register={register}
-            fieldName="name"
             helperText={errors?.name?.message}
             sx={textfieldStyle}
           />
           <TextField
             focused
             label="Surname"
+            {...register('surname')}
             error={!!errors?.surname}
-            register={register}
-            fieldName="surname"
             helperText={errors?.surname?.message}
             sx={textfieldStyle}
           />
           <TextField
             focused
             label="Address"
+            {...register('address')}
             error={!!errors?.address}
-            register={register}
-            fieldName="address"
             helperText={errors?.address?.message}
             sx={textfieldStyle}
           />
           <TextField
             focused
             label="Age"
+            type="number"
+            {...register('age')}
             error={!!errors?.age}
-            register={register}
-            fieldName="age"
             helperText={errors?.age?.message}
             sx={textfieldStyle}
           />
         </DialogContent>
+        <DialogActions sx={dialogActionStyle}>
+          <Button
+            variant="outlined"
+            onClick={handleClose}
+          >
+            Discard
+          </Button>
+          <LoadingButton
+            loading={isSaving}
+            variant="contained"
+            disableElevation
+            onClick={handleSubmit(onSubmitHandler)}
+            disabled={isSaving}
+          >
+            Save
+          </LoadingButton>
+        </DialogActions>
       </FormControl>
-      <DialogActions sx={dialogActionStyle}>
-        <Button
-          variant="outlined"
-          onClick={handleClose}
-        >
-          Discard
-        </Button>
-        <LoadingButton
-          loading={isSaving}
-          variant="contained"
-          disableElevation
-          onClick={handleSubmit(onSubmitHandler)}
-          disabled={isSaving}
-        >
-          Save
-        </LoadingButton>
-      </DialogActions>
     </Dialog>
   );
 };
