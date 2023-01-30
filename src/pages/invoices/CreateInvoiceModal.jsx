@@ -101,7 +101,6 @@ const CreateInvoiceModal = ({ isDialogOpened, setIsDialogOpened }) => {
     } catch (error) {
       toastifyAlertError('Something went wrong');
     }
-
     setIsSaving(false);
   };
 
@@ -202,6 +201,7 @@ const CreateInvoiceModal = ({ isDialogOpened, setIsDialogOpened }) => {
             <TextField
               focused
               label="Amount"
+              type="number"
               {...register('amount')}
               error={!!errors?.amount}
               helperText={errors?.amount?.message}
