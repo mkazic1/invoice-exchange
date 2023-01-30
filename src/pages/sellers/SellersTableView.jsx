@@ -113,7 +113,7 @@ const SellersTableView = () => {
               startIcon={<Edit />}
               size="medium"
               variant="contained"
-              disabled={selected.length === 0 || selected.length > 1}
+              disabled
               sx={{ marginRight: '10px' }}
             >
               Edit
