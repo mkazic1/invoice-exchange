@@ -20,7 +20,6 @@ import DeleteModal from './DeleteModal';
 import CreateInvoiceModal from './CreateInvoiceModal';
 import { headerCellStyle, rowCellStyle, tableBox } from '../../styles/pages/TableStyle';
 import { circularLoaderStyle, buttonsBoxStyle } from '../../styles/pages/PagesCommonStyle';
-import EditInvoiceModal from './EditInvoiceModal';
 
 const InvoicesTableView = () => {
   const [page, setPage] = useState(0);
@@ -29,7 +28,6 @@ const InvoicesTableView = () => {
   const [invoices, setInvoices] = useState([]);
   const [isDataLoading, setIsDataLoading] = useState(false);
   const [isCreateModalOpened, setIsCreateModalOpened] = useState(false);
-  const [isEditModalOpened, setIsEditModalOpened] = useState(false);
   const [isDeleteModalOpened, setIsDeleteModalOpened] = useState(false);
 
   const handleChangePage = (event, newPage) => {
@@ -103,19 +101,13 @@ const InvoicesTableView = () => {
               startIcon={<Edit />}
               size="medium"
               variant="contained"
-              disabled={selected.length === 0 || selected.length > 1}
-              onClick={() => setIsEditModalOpened(true)}
+              disabled
               sx={{ marginRight: '10px' }}
             >
               Edit
             </Button>
           </span>
         </Tooltip>
-        <EditInvoiceModal
-          isDialogOpened={isEditModalOpened}
-          setIsDialogOpened={setIsEditModalOpened}
-          invoiceId={selected}
-        />
         <Tooltip title="Delete invoice">
           <span>
             <Button
