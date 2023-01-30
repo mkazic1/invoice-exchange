@@ -140,10 +140,26 @@ const mockedServer = () => {
         const invoice = JSON.parse(request.requestBody);
         return schema.invoices.create(invoice);
       });
+      this.post('/sellers', (schema, request) => {
+        const seller = JSON.parse(request.requestBody);
+        return schema.sellers.create(seller);
+      });
+      this.post('/customers', (schema, request) => {
+        const customer = JSON.parse(request.requestBody);
+        return schema.customers.create(customer);
+      });
 
       this.delete('/invoices', (schema, request) => {
         const ids = JSON.parse(request.requestBody);
         return schema.invoices.all().filter((invoice) => ids.includes(invoice.id)).destroy();
+      });
+      this.delete('/sellers', (schema, request) => {
+        const ids = JSON.parse(request.requestBody);
+        return schema.sellers.all().filter((seller) => ids.includes(seller.id)).destroy();
+      });
+      this.delete('/customers', (schema, request) => {
+        const ids = JSON.parse(request.requestBody);
+        return schema.customers.all().filter((customer) => ids.includes(customer.id)).destroy();
       });
     },
   });
