@@ -39,7 +39,7 @@ const AddCustomerModal = ({ isDialogOpened, setIsDialogOpened }) => {
       .required(MESSAGES.REQUIRED_FIELD)
       .typeError(MESSAGES.INVALID_INPUT),
     age: Yup.number()
-      .moreThan(18, MESSAGES.INVALID_AGE)
+      .moreThan(17, MESSAGES.INVALID_AGE)
       .required(MESSAGES.REQUIRED_FIELD)
       .typeError(MESSAGES.INVALID_INPUT),
   });
