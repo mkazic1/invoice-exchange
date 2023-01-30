@@ -17,16 +17,27 @@ import {
   dialogTitleBox,
 } from '../styles/pages/CreateModalStyle';
 
-const DeleteModal = ({ isDialogOpened, setIsDialogOpened }) => {
+const DeleteModal = ({
+  isDialogOpened,
+  setIsDialogOpened,
+  invoiceIds,
+  setInvoiceIds,
+}) => {
   const [isSaving, setIsSaving] = useState(false);
 
   const handleClose = () => {
     setIsDialogOpened(false);
+    setInvoiceIds([]);
   };
 
   const onSubmitHandler = async () => {
     try {
       setIsSaving(true);
+      await fetch('/api/invoices', {
+        method: 'DELETE',
+        body: JSON.stringify(invoiceIds),
+        headers: { 'Content-Type': 'application/json' },
+      });
       toastifyAlertSuccess('Successfully deleted');
       handleClose();
     } catch (error) {
@@ -73,11 +84,15 @@ const DeleteModal = ({ isDialogOpened, setIsDialogOpened }) => {
 DeleteModal.defaultProps = {
   isDialogOpened: false,
   setIsDialogOpened: null,
+  invoiceIds: [],
+  setInvoiceIds: null,
 };
 
 DeleteModal.propTypes = {
   isDialogOpened: PropTypes.bool,
   setIsDialogOpened: PropTypes.func,
+  setInvoiceIds: PropTypes.func,
+  invoiceIds: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default DeleteModal;
