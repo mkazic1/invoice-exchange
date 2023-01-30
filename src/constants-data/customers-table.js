@@ -1,19 +1,19 @@
 const TABLE_HEADER = [
   {
     title: 'Name',
-    key: 0,
+    key: 'name',
   },
   {
     title: 'Surname',
-    key: 1,
+    key: 'surname',
   },
   {
     title: 'Address',
-    key: 2,
+    key: 'address',
   },
   {
     title: 'Age',
-    key: 2,
+    key: 'age',
   },
 ];
 

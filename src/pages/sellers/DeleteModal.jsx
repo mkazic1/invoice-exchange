@@ -9,24 +9,35 @@ import {
 } from '@mui/material';
 import { Delete } from '@mui/icons-material';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { toastifyAlertSuccess, toastifyAlertError } from '../constants-data/toastify';
+import { toastifyAlertSuccess, toastifyAlertError } from '../../constants-data/toastify';
 import {
   dialogActionStyle,
   iconStyle,
   titleTypographyStyle,
   dialogTitleBox,
-} from '../styles/pages/CreateModalStyle';
+} from '../../styles/pages/CreateModalStyle';
 
-const DeleteModal = ({ isDialogOpened, setIsDialogOpened }) => {
+const DeleteModal = ({
+  isDialogOpened,
+  setIsDialogOpened,
+  sellerIds,
+  setSellerIds,
+}) => {
   const [isSaving, setIsSaving] = useState(false);
 
   const handleClose = () => {
     setIsDialogOpened(false);
+    setSellerIds([]);
   };
 
   const onSubmitHandler = async () => {
     try {
       setIsSaving(true);
+      await fetch('/api/sellers', {
+        method: 'DELETE',
+        body: JSON.stringify(sellerIds),
+        headers: { 'Content-Type': 'application/json' },
+      });
       toastifyAlertSuccess('Successfully deleted');
       handleClose();
     } catch (error) {
@@ -73,11 +84,15 @@ const DeleteModal = ({ isDialogOpened, setIsDialogOpened }) => {
 DeleteModal.defaultProps = {
   isDialogOpened: false,
   setIsDialogOpened: null,
+  sellerIds: [],
+  setSellerIds: null,
 };
 
 DeleteModal.propTypes = {
   isDialogOpened: PropTypes.bool,
   setIsDialogOpened: PropTypes.func,
+  setSellerIds: PropTypes.func,
+  sellerIds: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default DeleteModal;

@@ -1,15 +1,15 @@
 const TABLE_HEADER = [
   {
     title: 'Company name',
-    key: 0,
+    key: 'companyName',
   },
   {
     title: 'Headquarters address',
-    key: 1,
+    key: 'hqAddress',
   },
   {
     title: 'Status',
-    key: 2,
+    key: 'isActive',
   },
 ];
 

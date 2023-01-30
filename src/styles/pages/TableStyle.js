@@ -1,4 +1,4 @@
-const headerCellStyle = {
+export const headerCellStyle = {
   border: '1px solid lightgray',
   textAlign: 'center',
   fontSize: 18,
@@ -6,6 +6,20 @@ const headerCellStyle = {
   backgroundColor: 'primary.main',
   color: 'text.secondary',
   padding: '10px',
+  width: '20%',
 };
 
-export default headerCellStyle;
+export const rowCellStyle = {
+  borderLeft: '1px solid lightgray',
+  textAlign: 'center',
+  letterSpacing: '0.1rem',
+  padding: '10px',
+  width: '20%',
+};
+
+export const tableBox = {
+  padding: '10px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+};
