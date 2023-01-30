@@ -35,7 +35,16 @@ const AddSellerModal = ({ isDialogOpened, setIsDialogOpened }) => {
     hqAddress: Yup.string()
       .required(MESSAGES.REQUIRED_FIELD)
       .typeError(MESSAGES.INVALID_INPUT),
-    isActive: Yup.boolean()
+    isActive: Yup.string()
+      .test({
+        test: (value) => {
+          if (value === 'Active' || value === 'Inactive') {
+            return true;
+          }
+          return false;
+        },
+        message: MESSAGES.ACTIVE_INACTIVE,
+      })
       .required(MESSAGES.REQUIRED_FIELD)
       .typeError(MESSAGES.INVALID_INPUT),
   });
@@ -44,7 +53,12 @@ const AddSellerModal = ({ isDialogOpened, setIsDialogOpened }) => {
     register, handleSubmit, reset, formState: { errors },
   } = useForm({
     resolver: yupResolver(validationSchema),
-    mode: 'onChange',
+    mode: 'onSubmit',
+    defaultValues: {
+      companyName: '',
+      hqAddress: '',
+      isActive: 'Active',
+    },
   });
 
   const handleClose = () => {
@@ -53,14 +67,32 @@ const AddSellerModal = ({ isDialogOpened, setIsDialogOpened }) => {
       {
         companyName: '',
         hqAddress: '',
-        isActive: '',
+        isActive: 'Active',
       },
     );
   };
 
-  const onSubmitHandler = async () => {
+  const formatStatus = (statusValue) => {
+    if (statusValue === 'Active') {
+      return true;
+    }
+    return false;
+  };
+
+  const onSubmitHandler = async (data) => {
+    const newSeller = {
+      companyName: data?.companyName,
+      hqAddress: data?.hqAddress,
+      isActive: formatStatus(data?.isActive),
+    };
     try {
       setIsSaving(true);
+      await fetch('/api/sellers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newSeller),
+      });
+
       toastifyAlertSuccess('New seller successfully added');
       handleClose();
     } catch (error) {
@@ -88,8 +120,7 @@ const AddSellerModal = ({ isDialogOpened, setIsDialogOpened }) => {
             focused
             label="Name"
             error={!!errors?.companyName}
-            register={register}
-            fieldName="companyName"
+            {...register('companyName')}
             helperText={errors?.companyName?.message}
             sx={textfieldStyle}
           />
@@ -97,17 +128,15 @@ const AddSellerModal = ({ isDialogOpened, setIsDialogOpened }) => {
             focused
             label="Headquarters address"
             error={!!errors?.hqAddress}
-            register={register}
-            fieldName="hqAddress"
+            {...register('hqAddress')}
             helperText={errors?.hqAddress?.message}
             sx={textfieldStyle}
           />
           <TextField
             focused
-            label="Address"
+            label="Status"
             error={!!errors?.isActive}
-            register={register}
-            fieldName="isActive"
+            {...register('isActive')}
             helperText={errors?.isActive?.message}
             sx={textfieldStyle}
           />
