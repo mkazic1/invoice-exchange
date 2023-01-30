@@ -98,7 +98,6 @@ const CreateInvoiceModal = ({ isDialogOpened, setIsDialogOpened }) => {
       date: formatDate(data?.date),
       amount: data?.amount,
     };
-    console.log(newInvoice);
     try {
       setIsSaving(true);
       await fetch('/api/invoices', {
@@ -186,7 +185,7 @@ const CreateInvoiceModal = ({ isDialogOpened, setIsDialogOpened }) => {
                 value={customerName}
               >
                 {customers?.map((customer) => (
-                  <MenuItem key={customer?.id} value={customer?.name}>
+                  <MenuItem key={customer?.id} value={`${customer?.name} ${customer?.surname}`}>
                     {`${customer?.name} ${customer?.surname}`}
                   </MenuItem>
                 ))}
