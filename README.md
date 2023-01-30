@@ -14,4 +14,7 @@ After installing node modules run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## NOTES for reviewers
+## Notes for Lanaco reviewers
+In the task it wasn't specified to implement Redux or any other tool for managing, saving and consuming states. I planned to implement it but didn't have time. Everything is done with simulated backend and mocked API calls supported by MirageJS library. The mock data and responses defined in Mirage persist as long as the frontend app is running and the Mirage server is active, but will be lost once the frontend app is shut down or refreshed.\
+There are some features I didn't manage to finish and to implement in this review version, but I did implement some bonus features, so I hope that will do.\
+Since my due date is today, I had to deliver my assignment. After the review I plann to finish remaining features and to implement Redux.
