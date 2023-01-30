@@ -23,7 +23,7 @@ const Customers = () => {
   return (
     <Box style={mainPagesLayoutStyle}>
       <Box sx={titleBoxStyle}>
-        <Typography variant="h6" sx={mainPagesTitleStyle}>Customers</Typography>
+        <Typography variant="h5" sx={mainPagesTitleStyle}>Customers</Typography>
         <Tooltip title="Add new customer">
           <Button
             startIcon={<AddBox />}

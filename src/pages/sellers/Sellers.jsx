@@ -23,7 +23,7 @@ const Sellers = () => {
   return (
     <Box style={mainPagesLayoutStyle}>
       <Box sx={titleBoxStyle}>
-        <Typography variant="h6" sx={mainPagesTitleStyle}>Sellers</Typography>
+        <Typography variant="h5" sx={mainPagesTitleStyle}>Sellers</Typography>
         <Tooltip title="Add new seller">
           <Button
             startIcon={<AddBox />}
