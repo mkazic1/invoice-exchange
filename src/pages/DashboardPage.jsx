@@ -9,7 +9,7 @@ const DashboardPage = () => (
         Welcome to Invoice Exchange System
       </Typography>
       <Typography variant="body1" sx={{ color: 'text.primary', textAlign: 'center' }}>
-        Welcome to your invoice management dashboard. Here, you can view your recent invoices,
+        This is your invoice management dashboard. Here, you can view your recent invoices,
         manage your sellers and customers, and track your financials.
       </Typography>
     </Box>

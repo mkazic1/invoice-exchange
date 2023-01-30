@@ -5,7 +5,7 @@ import { pageLayoutStyle, linkStyle } from '../styles/CommonStyle';
 
 const WelcomePage = () => (
   <Box sx={pageLayoutStyle}>
-    <Typography variant="h3" component="h1" sx={{ color: 'text.secondary', textAlign: 'center' }}>
+    <Typography variant="h3" component="h1" sx={{ color: 'text.primary', textAlign: 'center' }}>
       Invoice Exchange System
     </Typography>
     <Typography
